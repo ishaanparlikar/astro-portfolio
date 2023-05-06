@@ -1,0 +1,28 @@
+---
+---
+
+<nav
+  class="max-w-5xl mx-auto backdrop-blur border bg-neutral border-accent text-primary py-2 px-6 rounded-full flex items-center justify-between"
+>
+  <div>Logo</div>
+
+  <div>links</div>
+  <div>
+    <input type="checkbox" id="toggleTheme" />
+  </div>
+</nav>
+
+<script>
+  const toggleTheme: HTMLElement | HTMLInputElement = document.getElementById(
+    "toggleTheme"
+  ) as HTMLElement;
+  function switchTheme(e: any) {
+    if (e.target.checked) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  }
+
+  toggleTheme.addEventListener("change", switchTheme, false);
+</script>
