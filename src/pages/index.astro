@@ -6,8 +6,18 @@ import { getCollection } from "astro:content";
 
 // const about = await getCollection("profile");
 
+import About from "../components/About.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Experience from "../components/Experience.astro";
+import ContactMe from "../components/ContactMe.astro";
 // console.log(about);
 ---
 
 <BaseLayout>
+  <About />
+  <Skills />
+  <Projects />
+  <Experience />
+  <ContactMe />
 </BaseLayout>
