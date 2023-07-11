@@ -1,22 +1,26 @@
 [
 	{
 		"name": "About",
-		"route": "#about"
+		"route": "/#about"
 	},
 	{
 		"name": "Work",
-		"route": "#work"
+		"route": "/#work"
 	},
 	{
 		"name": "Skills",
-		"route": "#skills"
+		"route": "/#skills"
 	},
 	{
 		"name": "Projects",
-		"route": "#projects"
+		"route": "/#projects"
+	},
+  {
+		"name": "Blogs",
+		"route": "/blogs"
 	},
 	{
 		"name": "Contact",
-		"route": "#contact"
+		"route": "/#contact"
 	}
 ]
