@@ -1,5 +1,6 @@
 ---
 import Navbar from "../components/Navbar.astro";
+import "../styles/globals.scss";
 ---
 
 <html lang="en" class="mocha">
@@ -8,13 +9,23 @@ import Navbar from "../components/Navbar.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>Ishan Parlikar Portfolio</title>
+    <script>
+    if (localStorage.theme === 'mocha' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('mocha')
+    } else {
+      document.documentElement.classList.add('latte')
+      document.documentElement.classList.remove('mocha')
+      document.getElementById("toggleTheme").checked = true
+    }
+
+    </script>
   </head>
   <body class="bg-base">
-    <header class="relative">
+    <header class="relative h-14 my-5">
       <Navbar />
     </header>
-    <main class="max-w-3xl rounded-lg mx-auto min-h-screen">
+    <main class="max-w-4xl rounded-lg mx-auto min-h-screen">
       <slot />
     </main>
   </body>
