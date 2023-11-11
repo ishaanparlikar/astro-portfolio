@@ -1,15 +1,14 @@
 ---
 import Navlinks from '../../public/Navlinks.json'
 import Logo from '../../public/logo.svg'
+import Image from 'astro/components/Image.astro';
 ---
 
 
 <nav
-  class="fixed w-full  left-1/2 -translate-x-1/2  lg:max-w-5xl lg:mx-auto backdrop-blur-lg  border-solid  border-flamingo text-primary px-6 rounded-full flex items-center justify-between border-2"
+  class="fixed w-full  left-1/2 -translate-x-1/2  lg:max-w-5xl lg:mx-auto backdrop-blur-lg  border-solid  border-flamingo text-primary px-6 rounded-full flex items-center justify-between border-2 z-[99]"
 >
-
-  <img src={Logo} alt="Site Logo" height="25" width="25">
-
+  <Image src={Logo} alt="Site Logo" height="25" width="25"/>
   <ul class="flex gap-20   rounded backdrop-blur-lg m-3">
     {Navlinks.map((link) => {
       return <a href={link.route} class="text-red  font-bold hover:text-sapphire hover:bg-surface0 py-2 px-3 rounded-md">
