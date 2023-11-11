@@ -1,0 +1,46 @@
+---
+const {data} = Astro.props;
+console.log(data);
+---
+
+<script>
+  import Flicking from "@egjs/flicking";
+  import "@egjs/flicking/dist/flicking.css";
+
+  new Flicking("#carousel", {
+    align: "center",
+    renderOnlyVisible: true,
+    panelsPerView: 1,
+  });
+</script>
+
+<!-- Viewport element -->
+<div id="carousel" class="flicking-viewport w-full cursor-grab">
+  <!-- Camera element -->
+  <div class="flicking-camera">
+    <!-- Panels, class names are your choice -->
+    {
+      data.map((slide) => {
+        return (
+          <div class="panel w-full flex gap-4">
+            <div class="w-full bg-rosewater rounded p-3 text-base">
+              {slide.body}
+            </div>
+
+            <div class="w-full border-mauve border-4 rounded border-solid p-3">
+              Image
+              <div class="flex gap-8">
+                <button class="bg-teal text-crust hover:bg-green rounded px-4 py-2">
+                  Code
+                </button>
+                <button class="bg-flamingo text-crust hover:bg-maroon rounded px-4 py-2">
+                  Visit Site
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</div>
