@@ -1,18 +1,19 @@
+---
+import { getCollection } from "astro:content";
+const aboutData = await getCollection("about")
+console.log(aboutData)
+---
+
+
 <section
   class="bg-base dark:bg-text p-6 text-text h-screen  w-full flex flex-col gap-5 items-center justify-center  my-5"
   id="about"
 >
-  <h1 class="text-4xl font-bold">Hi My Name is</h1>
+ 
+  <h1 class="text-4xl font-bold">{aboutData[0].data.name}</h1>
+
 
   <h4 class="text-normal text-xl">About me</h4>
 
-  <p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur quam
-    veniam aliquid dolore, perferendis molestiae necessitatibus laudantium nisi
-    possimus laboriosam natus minima? Sapiente nesciunt tempora blanditiis dolor
-    ratione ea accusantium similique mollitia adipisci dignissimos id
-    necessitatibus aspernatur, rem accusamus magni atque reprehenderit. Ab
-    illum, eius eos at cupiditate hic laudantium, eaque velit repellendus
-    suscipit accusantium et, ut id ullam! Similique.
-  </p>
+  <p>{aboutData[0].data.description}</p>
 </section>
