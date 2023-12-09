@@ -1,14 +1,16 @@
 ---
+import { Icon } from 'astro-icon'
 interface Props {
   icon: HTMLElement | string;
   name: string;
 }
 const { icon, name } = Astro.props;
+
 ---
 
 <div
-  class="card flex h-28 w-[20%]  flex-col items-center justify-center gap-1 rounded-md border border-rosewater border-solid bg-transparent p-8 text-text   shadow-md  transition-all hover:origin-center  hover:text-neutral-1000 hover:shadow hover:shadow-rosewater active:!scale-105  lg:hover:!scale-110"
+  class="card flex p-4 flex-col items-center justify-center gap-4 rounded-md border border-rosewater border-solid bg-transparent text-text   shadow-md  transition-all hover:origin-center  hover:text-neutral-1000 hover:shadow hover:shadow-rosewater active:!scale-105  lg:hover:!scale-110"
 >
-  <div>{icon}</div>
+  <Icon height={36} width={36} name={icon}/>
   <p class="font-bold">{name}</p>
 </div>
