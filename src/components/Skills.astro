@@ -1,5 +1,6 @@
 ---
 import Pills from "./common/Pills.astro";
+import SkillIcon from '../utils/skills.json'
 ---
 
 <section
@@ -11,12 +12,8 @@ import Pills from "./common/Pills.astro";
     <h1 class="font-medium text-2xl text-crust">About my tech stacks</h1>
   </div>
   <div class="w-full px-6 py-16 rounded border-text border-solid border-2">
-    <div class="text-crust flex gap-5 items-center justify-center">
-      <Pills icon={"I"} name="Skill 1" />
-      <Pills icon={"I"} name="Skill 1" />
-      <Pills icon={"I"} name="Skill 1" />
-      <Pills icon={"I"} name="Skill 1" />
-      <Pills icon={"I"} name="Skill 1" />
+    <div class="text-crust grid grid-cols-5 gap-5  justify-center">
+      {SkillIcon.map(skill=><Pills icon={Object.values(skill)[0]} name={Object.keys(skill)[0]}/>)}
     </div>
   </div>
 </section>

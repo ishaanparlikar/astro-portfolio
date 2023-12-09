@@ -1,15 +1,22 @@
 ---
 import { getCollection } from "astro:content";
 const experience = await getCollection("work")
-console.log(experience)
 ---
-<section class="my-2 rounded">
+<section class="my-2 rounded" id="work">
 
   <div class="py-4 px-6 mb-4 rounded bg-teal w-full text-crust">
     <h1 class="text-2xl font-medium">My Experiences</h1>
   </div>
-
-  <div class="w-full px-6 py-16 rounded border-teal border-solid border-2">
-    {experience[0].body}
+  <div class="grid grid-cols-1 gap-x-3 gap-y-6 w-full px-6 py-16 rounded border-teal border-solid border-2">
+    {experience.map((exp)=>{
+      return(
+        <div class="w-full">
+          <h3 class="text-lavender font-bold text-2xl">{exp.data.companyName}</h3>
+          <p class="text-yellow text-md italic font-medium">{exp.data.position}</p>
+          <p class="text-green text-md font-bold">{exp.data.to} - {exp.data.from}</p>
+          <p class="text-text text-md">{exp.body}</p>
+        </div>
+      )
+    })}
   </div>
 </section>
