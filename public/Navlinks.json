@@ -8,19 +8,19 @@
 		"route": "/#work"
 	},
 	{
+		"name": "Projects",
+		"route": "/#projects"
+	},
+	{
 		"name": "Skills",
 		"route": "/#skills"
 	},
 	{
-		"name": "Projects",
-		"route": "/#projects"
+		"name": "Contact",
+		"route": "/#contact"
 	},
   {
 		"name": "Blogs",
 		"route": "/blogs"
-	},
-	{
-		"name": "Contact",
-		"route": "/#contact"
 	}
 ]
