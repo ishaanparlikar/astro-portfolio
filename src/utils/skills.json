@@ -1,0 +1,23 @@
+
+[
+  { "HTML":"logos:html-5"},
+  { "CSS":"logos:css-3"},
+  { "SCSS":"vscode-icons:file-type-scss"},
+  { "Javascript":"logos:javascript"},
+  { "Typescript":"logos:typescript-icon"},
+  { "React": "logos:react"},
+  { "NextJs":"vscode-icons:file-type-next"},
+  { "Git":"codicon:github-alt"},
+  { "TailwindCSS":"logos:tailwindcss-icon"},
+  { "Astro":"logos:astro"},
+  { "Vue":"logos:vue"},
+  { "Nuxt":"logos:nuxt-icon"},
+  { "Vite":"vscode-icons:file-type-vite"},
+  { "NodeJS":"logos:nodejs-icon"},
+  { "Svelte":"logos:svelte-icon"},
+  { "Firebase":"logos:firebase"},
+  { "AWS":"logos:aws"},
+  { "Django":"vscode-icons:file-type-django"},
+  { "Markdown":"mdi:language-markdown"}
+]
+
