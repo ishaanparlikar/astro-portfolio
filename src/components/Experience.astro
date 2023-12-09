@@ -2,12 +2,12 @@
 import { getCollection } from "astro:content";
 const experience = await getCollection("work")
 ---
-<section class="my-2 rounded" id="work">
+<section class="my-2 rounded section"  id="Work" data-section-id="Work">
 
   <div class="py-4 px-6 mb-4 rounded bg-teal w-full text-crust">
     <h1 class="text-2xl font-medium">My Experiences</h1>
   </div>
-  <div class="grid grid-cols-1 gap-x-3 gap-y-6 w-full px-6 py-16 rounded border-teal border-solid border-2">
+  <div class="grid grid-cols-1 gap-xr3 gap-y-6 w-full px-6 py-10 rounded border-teal border-solid border-2 max-h-[90vh] overflow-y-auto">
     {experience.map((exp)=>{
       return(
         <div class="w-full">

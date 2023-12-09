@@ -1,13 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 const aboutData = await getCollection("about")
-console.log(aboutData)
 ---
 
 
 <section
-  class="bg-base dark:bg-text p-6 text-text h-screen  w-full flex flex-col gap-5 items-center justify-center  my-5"
-  id="about"
+  class="section bg-base dark:bg-text p-6 text-text h-screen  w-full flex flex-col gap-5 items-center justify-center  my-5"
+  id="About" data-section-id="About"
 >
  
   <h1 class="text-4xl font-bold">{aboutData[0].data.name}</h1>
