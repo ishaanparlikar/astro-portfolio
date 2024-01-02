@@ -1,8 +1,8 @@
 ---
-companyName: test
-position: test
-from: test
-to: test
+companyName: Hoxton Capital Management, Dubai/UK
+position: Front End Engineer
+from: April'22
+to: Jan'23
+icons: ['logos:react','logos:typescript-icon','logos:webpack','vscode-icons:file-type-next','logos:nodejs-icon','logos:jira']
 ---
-
-Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.
+The Next Gen Finance asset management application represents a sophisticated platform designed to cater to clients' financial portfolio needs. It serves as a comprehensive tool for both individuals and corporations to manage, analyze, and optimize their diverse financial holdings.
