@@ -14,8 +14,9 @@ const workCollection = defineCollection({
   schema: z.object({
     companyName: z.string(),
     position: z.string(),
-    from: z.string(),
-    to: z.string(),
+    from: z.string().nullable(),
+    to: z.string().nullable(),
+    icons: z.array(z.string()).optional()
   }),
 });
 
