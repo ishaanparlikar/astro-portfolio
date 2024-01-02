@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 const experience = await getCollection("work")
+import { Icon } from 'astro-icon'
 ---
 <section class="my-2 rounded section"  id="Work" data-section-id="Work">
 
@@ -11,9 +12,14 @@ const experience = await getCollection("work")
     {experience.map((exp)=>{
       return(
         <div class="w-full">
-          <h3 class="text-lavender font-bold text-2xl">{exp.data.companyName}</h3>
-          <p class="text-yellow text-md italic font-medium">{exp.data.position}</p>
-          <p class="text-green text-md font-bold">{exp.data.to} - {exp.data.from}</p>
+          <h3 class="text-teal font-bold text-2xl">{exp.data.companyName}</h3>
+          <p class="text-text text-md italic font-medium">{exp.data.position}</p>
+          <p class="text-text text-md font-bold">{exp.data.from} - {exp.data.to}</p>
+          {exp.data.icons && (
+            <div class="my-1 flex">
+              {exp.data?.icons.map(icon => <Icon height={20} width={20} name={icon}/> )}
+            </div>
+          )}
           <p class="text-text text-md">{exp.body}</p>
         </div>
       )
