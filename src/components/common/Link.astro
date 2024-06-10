@@ -1,0 +1,30 @@
+---
+const {href, text, active} = Astro.props
+---
+
+<a class={active ? 'underline_b' : ''} href={href}>{text}</a>
+
+
+<style scoped lang="scss">
+a{
+  @apply text-lg;
+  &:hover{
+    @apply text-teal border-b-4 border-overlay1 border-solid;
+  }
+  &.active {
+  @apply relative transition-opacity duration-75 text-teal;
+  &::after{
+    content: '';
+    @apply border-b-4 border-mauve opacity-50 border-solid inline-block w-full absolute -bottom-1 left-0 transition-opacity duration-75 hover:opacity-100 ;
+    }
+  }
+&.underline_b{
+    @apply relative transition-opacity duration-75 text-teal;
+    &::after{
+      content: '';
+      @apply border-b-4 border-overlay0 opacity-50 border-solid inline-block w-full absolute -bottom-1 left-0 transition-opacity duration-75 hover:opacity-100 ;
+      }
+    }
+
+}
+</style>

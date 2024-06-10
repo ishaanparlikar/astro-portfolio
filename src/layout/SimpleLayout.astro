@@ -1,0 +1,34 @@
+---
+import SimpleNavbar from "../components/SimpleNavbar.astro"
+import "../styles/globals.scss";
+import {ViewTransitions} from "astro:transitions"
+---
+
+<html lang="en" class="mocha">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Ishan Parlikar Portfolio</title>
+    <ViewTransitions />
+    <script>
+    if (localStorage.theme === 'mocha' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('mocha')
+    } else {
+      document.documentElement.classList.add('latte')
+      document.documentElement.classList.remove('mocha')
+      document.getElementById("toggleTheme").checked = true
+    }
+
+    </script>
+  </head>
+  <body class="bg-base text-text min-h-screen">
+    <header class="w-full">
+      <SimpleNavbar/>
+    </header>
+    <main transition:animate="slide" class="p-4 md:px-12 my-12">
+      <slot />
+    </main>
+  </body>
+</html>

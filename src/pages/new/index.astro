@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+// const posts = await Astro.glob("../content/profile/about.md");
+import { getCollection } from "astro:content";
+
+import About from "../components/About.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Experience from "../components/Experience.astro";
+import ContactMe from "../components/ContactMe.astro";
+import Education from "../components/Education.astro";
+---
+
+<BaseLayout>
+  <About />
+  <Experience />
+  <Projects />
+  <Skills />
+  <Education/>
+  <ContactMe />
+</BaseLayout>
