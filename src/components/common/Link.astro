@@ -1,30 +1,46 @@
 ---
-const {href, text, active} = Astro.props
+interface Props {
+  href: string;
+  text: string;
+  active?: boolean;
+  classList?: {};
+}
+const { href, text, active, classList } = Astro.props;
 ---
 
-<a class={active ? 'underline_b' : ''} href={href}>{text}</a>
+<a
+  class:list={[
+    classList,
+    {
+      underline_b: active,
+    },
+  ]}
+  href={href}>{text}</a
+>
 
-
-<style scoped lang="scss">
-a{
-  @apply text-lg;
-  &:hover{
-    @apply text-teal border-b-4 border-overlay1 border-solid;
-  }
-  &.active {
-  @apply relative transition-opacity duration-75 text-teal;
-  &::after{
-    content: '';
-    @apply border-b-4 border-mauve opacity-50 border-solid inline-block w-full absolute -bottom-1 left-0 transition-opacity duration-75 hover:opacity-100 ;
+<style is:global lang="scss">
+  a {
+    @apply text-lg inline relative transition-opacity duration-75 text-mantle;
+    &::after {
+      content: "";
+      /* @apply border-b-4 opacity-50 border-solid inline-block w-full absolute -bottom-1 left-0 transition-opacity duration-75 hover:opacity-100; */
     }
-  }
-&.underline_b{
-    @apply relative transition-opacity duration-75 text-teal;
-    &::after{
-      content: '';
-      @apply border-b-4 border-overlay0 opacity-50 border-solid inline-block w-full absolute -bottom-1 left-0 transition-opacity duration-75 hover:opacity-100 ;
+    &:hover {
+      @apply text-teal border-overlay1 border-solid;
+    }
+    &.active {
+      @apply relative transition-opacity duration-75 text-text;
+      &::after {
+        content: "";
+        @apply border-b-4 border-red opacity-50 border-solid inline-block w-full absolute -bottom-1 left-0 transition-opacity duration-75 hover:opacity-100;
       }
     }
-
-}
+    &.underline_b {
+      @apply relative transition-opacity duration-75 text-text;
+      &::after {
+        content: "";
+        @apply border-b-4 border-overlay0 opacity-50 border-solid inline-block w-full absolute -bottom-1 left-0 transition-opacity duration-75 hover:opacity-100;
+      }
+    }
+  }
 </style>

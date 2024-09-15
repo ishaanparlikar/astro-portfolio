@@ -1,0 +1,42 @@
+---
+import type { GetStaticPaths } from "astro";
+import { marked } from "marked";
+import fetchApi from "src/lib/strapi";
+import slugify from "@sindresorhus/slugify";
+import SimpleLayout from "@layout/SimpleLayout.astro";
+import type { BlogsType } from "src/interface/blogs";
+import { SEO } from "astro-seo";
+
+export const getStaticPaths = (async () => {
+  const blogs = await fetchApi<BlogsType[]>({
+    endpoint: "blogs", // the content type to fetch
+    wrappedByKey: "data", // the key to unwrap the response
+  });
+  return blogs.map((blog) => {
+    return {
+      params: {
+        slug: slugify(blog.attributes.title),
+      },
+      props: {
+        title: blog.attributes.title,
+        published: blog.attributes.publishedAt,
+        blog: blog.attributes.content,
+      },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { blog, title, published } = Astro.props;
+const content = marked.parse(blog);
+---
+
+<SimpleLayout>
+  <SEO slot="head" title={title + " | Ishan Parlikar"} />
+  <h1 class="text-4xl font-bold">{title}</h1>
+  <p class="text-xs mb-4 mt-2">
+    Published : {new Date(published).toUTCString()}
+  </p>
+  <main class="my-10">
+    <Fragment set:html={content} />
+  </main>
+</SimpleLayout>

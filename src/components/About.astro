@@ -1,18 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-const aboutData = await getCollection("about")
+const aboutData = await getCollection("about");
 ---
 
-
-<section
-  class="section bg-base dark:bg-text p-6 text-text h-screen  w-full flex flex-col gap-5 items-center justify-center  my-5"
-  id="About" data-section-id="About"
->
- 
-  <h1 class="text-4xl font-bold">{aboutData[0].data.name}</h1>
-
-
-  <h4 class="text-normal text-xl">About me</h4>
-
+<section class="text-text my-5" id="About" data-section-id="About">
   <p>{aboutData[0].body}</p>
 </section>

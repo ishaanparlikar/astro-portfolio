@@ -1,7 +1,40 @@
 ---
-import BaseLayout from "../../layout/BaseLayout.astro";
+import SimpleLayout from "@layout/SimpleLayout.astro";
+import fetchApi from "src/lib/strapi";
+import slugify from "@sindresorhus/slugify";
+import type { BlogsType } from "src/interface/blogs";
+
+const blogs = await fetchApi<BlogsType[]>({
+  endpoint: "blogs", // the content type to fetch
+  wrappedByKey: "data", // the key to unwrap the response
+});
 ---
 
-<BaseLayout>
-  <h1>Welcome to my blog</h1>
-</BaseLayout>
+<SimpleLayout>
+  <title slot="head">Blogs | Ishan Parlikar</title>
+  <div class="flex flex-col gap-4 my-8">
+    {
+      blogs.map((blog) => {
+        return (
+          <article class="flex justify-between">
+            <a
+              href={"/blogs/" + slugify(blog.attributes.title)}
+              class="underline_b"
+            >
+              {blog.attributes.title}
+            </a>
+            <dl class="text-sm">
+              <dd>
+                <time>
+                  {new Date(blog.attributes.publishedAt).toLocaleString(
+                    "en-US",
+                  )}
+                </time>
+              </dd>
+            </dl>
+          </article>
+        );
+      })
+    }
+  </div>
+</SimpleLayout>

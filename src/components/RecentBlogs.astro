@@ -1,0 +1,26 @@
+---
+import type { BlogsType } from "src/interface/blogs";
+import fetchApi from "src/lib/strapi";
+import slugify from "@sindresorhus/slugify";
+import Link from "./common/Link.astro";
+
+const blogs = await fetchApi<BlogsType[]>({
+  endpoint: "blogs", // the content type to fetch
+  wrappedByKey: "data", // the key to unwrap the response
+});
+---
+
+<h1 class="text-2xl mb-4 font-bold">Recent Blogs</h1>
+
+{
+  blogs.slice(-3).map((blog) => {
+    return (
+      <article class="mb-2 text-sapphire" title={blog.attributes.title}>
+        <Link
+          href={"/blogs/" + slugify(blog.attributes.title)}
+          text={blog.attributes.title}
+        />
+      </article>
+    );
+  })
+}

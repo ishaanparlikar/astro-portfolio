@@ -1,19 +1,30 @@
 ---
+interface Props {
+  data: ProjectsType[];
+}
 import { getCollection } from "astro:content";
 import Slider from "./common/Slider.astro";
+import Card from "./common/Card.astro";
+import type { ProjectsType } from "src/interface/projects";
 
-const projects = await getCollection("work")
+const { data } = Astro.props;
 ---
 
-<section
-  class="section my-4 flex flex-col items-center justify-center"
-  id="Projects"
-  data-section-id="Projects"
->
-  <div class="py-4 px-6 mb-4 rounded bg-mauve w-full">
-    <h1 class="text-2xl font-medium text-crust">Projects</h1>
-  </div>
-  <div class="min-h-full w-full px-6 py-16 rounded border-mauve text-text border-solid border-2 ">
-   <Slider data={projects} client:load/> 
-  </div>
-</section>
+<div id="projects" class="my-10">
+  <h3 class="text-2xl">Things I have built</h3>
+  {
+    data.map((project) => {
+      return (
+        <>
+          <a href={project.attributes.link} target="_blank">
+            <Card
+              title={project.attributes.title}
+              desc={project.attributes.description}
+              pills={project?.attributes.pills}
+            />
+          </a>
+        </>
+      );
+    })
+  }
+</div>

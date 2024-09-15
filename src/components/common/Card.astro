@@ -1,0 +1,55 @@
+---
+interface Props {
+  duration?: string;
+  title: string;
+  desc: string;
+  pills?: string[];
+  position?: string;
+}
+import Pill from "./Pill.astro";
+import RichText from "./RichText.astro";
+import { marked } from "marked";
+const { duration, title, desc, pills, position } = Astro.props;
+
+const content = marked.parse(desc);
+---
+
+<div class="card flex gap-8 p-4 items-start cursor-pointer my-4">
+  {
+    duration && (
+      <h4 class="text-sm whitespace-nowrap leading-loose text-overlay2">
+        {duration}
+      </h4>
+    )
+  }
+
+  <div class="">
+    <h3 class="text-xl mb-4 text-text">{title}</h3>
+    <h5>{position}</h5>
+    <Fragment set:html={content} />
+    <div class="flex flex-wrap gap-2">
+      {
+        pills?.map((pill: string) => {
+          return <Pill name={pill} />;
+        })
+      }
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .card h4 {
+    flex: 0 0 100px;
+  }
+  .card:hover {
+    h3 {
+      @apply text-sapphire;
+    }
+    & {
+      background: rgba(205, 214, 244, 0.05);
+    }
+    /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+    /* backdrop-filter: blur(4px); */
+    @apply rounded-xl;
+  }
+</style>

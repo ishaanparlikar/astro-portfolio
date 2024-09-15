@@ -1,7 +1,7 @@
 ---
 companyName: Hoxton Capital Management, Dubai/UK
 position: Front End Engineer
-from: April'22
+from: Apr'22
 to: Jan'23
 icons: ['logos:react','logos:typescript-icon','logos:webpack','vscode-icons:file-type-next','logos:nodejs-icon','logos:jira']
 ---

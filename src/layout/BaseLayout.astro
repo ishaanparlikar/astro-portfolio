@@ -16,6 +16,7 @@ import "../styles/globals.scss";
     } else {
       document.documentElement.classList.add('latte')
       document.documentElement.classList.remove('mocha')
+      //@ts-expect-error Object possibly null
       document.getElementById("toggleTheme").checked = true
     }
 
