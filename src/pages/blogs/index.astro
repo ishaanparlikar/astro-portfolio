@@ -8,6 +8,8 @@ const blogs = await fetchApi<BlogsType[]>({
   endpoint: "blogs", // the content type to fetch
   wrappedByKey: "data", // the key to unwrap the response
 });
+
+console.log(blogs)
 ---
 
 <SimpleLayout>
@@ -17,18 +19,18 @@ const blogs = await fetchApi<BlogsType[]>({
       blogs.map((blog) => {
         return (
           <article class="flex justify-between">
-            <a
-              href={"/blogs/" + slugify(blog.attributes.title)}
-              class="underline_b"
-            >
-              {blog.attributes.title}
-            </a>
+            <!-- <a -->
+            <!--   href={"/blogs/" + slugify(blog.attributes.title)} -->
+            <!--   class="underline_b" -->
+            <!-- > -->
+            <!--   {blog.attributes.title} -->
+            <!-- </a> -->
             <dl class="text-sm">
               <dd>
                 <time>
-                  {new Date(blog.attributes.publishedAt).toLocaleString(
-                    "en-US",
-                  )}
+                  <!-- {new Date(blog.attributes.publishedAt).toLocaleString( -->
+                  <!--   "en-US", -->
+                  <!-- )} -->
                 </time>
               </dd>
             </dl>

@@ -9,6 +9,7 @@ const experiences = await fetchApi<experience[]>({
   endpoint: "experiences", // the content type to fetch
   wrappedByKey: "data", // the key to unwrap the response
 });
+console.log(experiences)
 ---
 
 <SimpleLayout>

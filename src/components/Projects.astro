@@ -16,7 +16,7 @@ const { data } = Astro.props;
     data.map((project) => {
       return (
         <>
-          <a href={project.attributes.link} target="_blank">
+          <a href={project.attributes?.link} target="_blank">
             <Card
               title={project.attributes.title}
               desc={project.attributes.description}
