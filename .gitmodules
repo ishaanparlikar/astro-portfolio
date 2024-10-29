@@ -1,0 +1,3 @@
+[submodule "src/src/content"]
+	path = src/src/content
+	url = https://github.com/ishaanparlikar/portfolio-content.git
