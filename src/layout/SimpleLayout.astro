@@ -1,34 +1,51 @@
 ---
-import SimpleNavbar from "../components/SimpleNavbar.astro"
+import SimpleNavbar from "../components/SimpleNavbar.astro";
 import "../styles/globals.scss";
-import {ViewTransitions} from "astro:transitions"
+import { ViewTransitions } from "astro:transitions";
 ---
 
-<html lang="en" class="mocha">
+<html lang="en" class="frappe">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Ishan Parlikar Portfolio</title>
     <ViewTransitions />
     <script>
-    if (localStorage.theme === 'mocha' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('mocha')
-    } else {
-      document.documentElement.classList.add('latte')
-      document.documentElement.classList.remove('mocha')
-      document.getElementById("toggleTheme").checked = true
-    }
-
+      if (
+        localStorage.theme === "frappe" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("frappe");
+      } else {
+        document.documentElement.classList.add("latte");
+        document.documentElement.classList.remove("frappe");
+        //@ts-expect-error Object possibly null
+        document.getElementById("toggleTheme").checked = true;
+      }
     </script>
+    <slot name="head" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-base text-text min-h-screen">
-    <header class="w-full">
-      <SimpleNavbar/>
-    </header>
-    <main transition:animate="slide" class="p-4 md:px-12 my-12">
-      <slot />
+  <body class="bg-crust text-text flex px-10 no-scrollbar max-w-6xl mx-auto">
+    <main
+      transition:animate="slide"
+      class="py-24 flex justify-between w-2/3 no-scrollbar"
+    >
+      <section class="w-full">
+        <slot />
+      </section>
     </main>
+    <header
+      class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/3 lg:flex-col lg:justify-between lg:py-24"
+    >
+      <SimpleNavbar />
+    </header>
   </body>
 </html>

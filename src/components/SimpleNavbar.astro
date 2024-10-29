@@ -1,94 +1,82 @@
 ---
-import Navlinks from '../../public/Navlinks.json'
-import Link from '../components/common/Link.astro'
+import Navlinks from "../../public/Navlinks.json";
+import Link from "../components/common/Link.astro";
 ---
 
-<nav class="bg-transparent flex justify-between  items-center gap-16 py-2 px-4 md:px-12">
-  <div class="flex items-center">
-    <h4 class="mr-8">
-      <Link href="/" text="Ishan Parlikar"/>
-    </h4>
-    <ul class="menu-items flex gap-8 items-center rounded backdrop-blur-lg h-full justify-center">
-      <li>
-        <Link text="About" href="/about"/>
-      </li>
-      <li>
-        <Link text="Uses" href="/uses"/>
-      </li>
-      <li>
-        <Link text="Blogs" href="/blogs"/>
-      </li>
-    </ul>
-  </div>
+<nav class="bg-transparent flex flex-col justify-start items-end text-end">
+  <ul class="menu-items w-full flex flex-col gap-6">
+    <li>
+      <Link text="About" href="/bio" />
+    </li>
+    <li>
+      <Link text="Projects" href="/#projects" />
+    </li>
+    <li>
+      <Link text="Uses" href="/uses" />
+    </li>
+    <li>
+      <Link text="Blogs" href="/blogs" />
+    </li>
+  </ul>
   <input type="checkbox" id="toggleTheme" />
 </nav>
 
 <script is:inline>
-let toggleTheme = document.getElementById("toggleTheme")
-function switchTheme(e){
-  if (e.target.checked) {
-    localStorage.theme = "latte"
-    document.documentElement.className = "latte"
-  } else {
-    localStorage.theme = "mocha"
-    document.documentElement.className = "mocha"
-  }
-  console.log("Set Theme called",localStorage.theme)
-}
-
-// toggleTheme.addEventListener("change", switchTheme, false);
-
-function setTheme(){
-  let theme = localStorage.theme ? localStorage.theme : 'mocha';
-  localStorage.theme = theme
-  document.documentElement.className = theme
-}
-
-document.addEventListener('astro:page-load', () => {
-  let toggleThemeBtn = document.getElementById("toggleTheme")
-
-  highlightNavItem();
-  // if(localStorage.theme=="latte") toggleTheme.checked = true
-  // setTheme()
-
-  if(localStorage.theme){
-    document.documentElement.className = localStorage.theme
-  }
-  else{
-    document.documentElement.className = "mocha"
-  }
-
-  if(localStorage.theme == "latte"){
-    toggleThemeBtn.checked = true
-  }
-  else{
-    toggleThemeBtn.checked = false
-  }
-
-
-  toggleThemeBtn.addEventListener("change", (e)=>{
+  let toggleTheme = document.getElementById("toggleTheme");
+  function switchTheme(e) {
     if (e.target.checked) {
-      localStorage.theme = "latte"
-      document.documentElement.className = "latte"
+      localStorage.theme = "latte";
+      document.documentElement.className = "latte";
     } else {
-      localStorage.theme = "mocha"
-      document.documentElement.className = "mocha"
-    }})
-
-  
-
-
-})
-function highlightNavItem(){
-  if(location.pathname == "/" ) {
-    document.querySelector("nav h4 a")?.classList.add("active")
+      localStorage.theme = "frappe";
+      document.documentElement.className = "frappe";
+    }
+    console.log("Set Theme called", localStorage.theme);
   }
-  document.querySelector(`a[href="${location.pathname}"]`)?.classList.add("active")
-}
-</script>
 
-<style>
-.menu-item.active{
-  @apply bg-blue text-crust
-}
-</style>
+  // toggleTheme.addEventListener("change", switchTheme, false);
+
+  function setTheme() {
+    let theme = localStorage.theme ? localStorage.theme : "frappe";
+    localStorage.theme = theme;
+    document.documentElement.className = theme;
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    let toggleThemeBtn = document.getElementById("toggleTheme");
+
+    highlightNavItem();
+    // if(localStorage.theme=="latte") toggleTheme.checked = true
+    // setTheme()
+
+    if (localStorage.theme) {
+      document.documentElement.className = localStorage.theme;
+    } else {
+      document.documentElement.className = "frappe";
+    }
+
+    if (localStorage.theme == "latte") {
+      toggleThemeBtn.checked = true;
+    } else {
+      toggleThemeBtn.checked = false;
+    }
+
+    toggleThemeBtn.addEventListener("change", (e) => {
+      if (e.target.checked) {
+        localStorage.theme = "latte";
+        document.documentElement.className = "latte";
+      } else {
+        localStorage.theme = "frappe";
+        document.documentElement.className = "frappe";
+      }
+    });
+  });
+  function highlightNavItem() {
+    if (location.pathname == "/") {
+      document.querySelector("nav h4 a")?.classList.add("active");
+    }
+    document
+      .querySelector(`a[href="${location.pathname}"]`)
+      ?.classList.add("active");
+  }
+</script>

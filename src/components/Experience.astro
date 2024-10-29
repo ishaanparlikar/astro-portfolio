@@ -1,28 +1,29 @@
 ---
 import { getCollection } from "astro:content";
-const experience = await getCollection("work")
-import { Icon } from 'astro-icon'
+import type experience from "src/interface/experience";
+interface Props {
+  experiences: experience[];
+}
+const { experiences } = Astro.props;
+import { Icon } from "astro-icon";
+import Card from "./common/Card.astro";
 ---
-<section class="my-2 rounded section"  id="Work" data-section-id="Work">
 
-  <div class="py-4 px-6 mb-4 rounded bg-teal w-full text-crust">
-    <h1 class="text-2xl font-medium">My Experiences</h1>
-  </div>
-  <div class="grid grid-cols-1 gap-xr3 gap-y-6 w-full px-6 py-10 rounded border-teal border-solid border-2 max-h-[90vh] overflow-y-auto">
-    {experience.map((exp)=>{
-      return(
-        <div class="w-full">
-          <h3 class="text-teal font-bold text-2xl">{exp.data.companyName}</h3>
-          <p class="text-text text-md italic font-medium">{exp.data.position}</p>
-          <p class="text-text text-md font-bold">{exp.data.from} - {exp.data.to}</p>
-          {exp.data.icons && (
-            <div class="my-1 flex">
-              {exp.data?.icons.map(icon => <Icon height={20} width={20} name={icon}/> )}
-            </div>
-          )}
-          <p class="text-text text-md">{exp.body}</p>
-        </div>
-      )
-    })}
+<section class="my-2 rounded section" id="Work" data-section-id="Work">
+  <div class="grid grid-cols-1 gap-xr3 gap-y-6 w-full rounded">
+    {
+      experiences.map((exp) => {
+        return (
+          <>
+            <Card
+              duration={`${exp.attributes.start_date}-${exp.attributes.end_date ?? "present"}`}
+              title={exp.attributes.company_name}
+              desc={exp.attributes.description}
+              position={exp.attributes.role}
+            />
+          </>
+        );
+      })
+    }
   </div>
 </section>

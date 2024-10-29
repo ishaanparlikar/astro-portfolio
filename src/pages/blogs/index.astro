@@ -1,7 +1,36 @@
 ---
-import BaseLayout from "../../layout/BaseLayout.astro";
+import SimpleLayout from "@layout/SimpleLayout.astro";
+import { getCollection } from "astro:content";
+
+const blogs = await getCollection("Blogs")
+
 ---
 
-<BaseLayout>
-  <h1>Welcome to my blog</h1>
-</BaseLayout>
+<SimpleLayout>
+  <title slot="head">Blogs | Ishan Parlikar</title>
+  <div class="flex flex-col gap-4 my-8">
+    {
+    blogs?.map((blog) => {
+    return (
+    <article class="flex justify-between">
+      <a
+        href=`blogs/${blog.slug}`
+        class="underline_b"
+      >
+        {blog.data.title}
+      </a>
+      <dl class="text-sm">
+        <dd>
+          <time>
+            {new Date(blog.data.publishedAt).toLocaleString(
+              "en-US",
+            )}
+          </time>
+        </dd>
+      </dl>
+    </article>
+    );
+    })
+    }
+  </div>
+</SimpleLayout>

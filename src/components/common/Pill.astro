@@ -1,0 +1,19 @@
+---
+import Icon from "astro-icon";
+const {name} = Astro.props
+---
+
+<span
+  class="pill py-1 px-3 inline-flex items-center leading-relaxed rounded-full text-sm text-text font-bold capitalize"
+>
+{name}  
+</span>
+
+<style>
+  .pill {
+    background: rgba(116, 199, 236, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+</style>

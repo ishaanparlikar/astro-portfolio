@@ -1,0 +1,44 @@
+---
+import type { RichBlockType } from "src/interface/RichText";
+import Heading from "./Blocks/Heading.astro";
+import Paragraph from "./Blocks/Paragraph.astro";
+import List from "./Blocks/List.astro";
+import { getImage, Image } from "astro:assets";
+interface Props {
+  data: RichBlockType[];
+}
+
+const { data } = Astro.props;
+
+//link pending
+---
+
+<section>
+  {
+    data.map(async (block) => {
+      let img;
+      if (block.type == "image") {
+        img = await getImage({
+          src: block.image.url,
+          inferSize: true,
+        });
+      }
+      return (
+        <>
+          {block.type == "heading" && <Heading data={block} />}
+          {block.type == "paragraph" && <Paragraph data={block} />}
+          {block.type == "quote" && "quote"}
+          {block.type == "list" && <List data={block} />}
+          {block.type == "image" && (
+            <Image
+              src={img.src}
+              height={block.image.height}
+              alt={block.image.alternativeText}
+              width={block.image.width}
+            />
+          )}
+        </>
+      );
+    })
+  }
+</section>

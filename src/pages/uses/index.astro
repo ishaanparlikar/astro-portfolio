@@ -1,9 +1,23 @@
 ---
-import SimpleLayout from "@layout/SimpleLayout.astro"
+import RichText from "@components/common/RichText.astro";
+import SimpleLayout from "@layout/SimpleLayout.astro";
+import fetchApi from "src/lib/strapi";
+interface usesData {
+  attributes: {
+    data: string;
+  };
+}
+// const data = await fetchApi<usesData>({
+//   endpoint: "use", // the content type to fetch
+//   wrappedByKey: "data", // the key to unwrap the response
+// });
+// import { marked } from "marked";
+// const content = marked.parse(data.attributes.data);
 ---
 
 <SimpleLayout>
-
+  <title slot="head">Uses | Ishan Parlikar</title>
+  <section>
+    <!-- <Fragment set:html={content} /> -->
+  </section>
 </SimpleLayout>
-
-

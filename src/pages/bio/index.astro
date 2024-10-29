@@ -1,0 +1,19 @@
+---
+import About from "@components/About.astro";
+import Experience from "@components/Experience.astro";
+import SimpleLayout from "@layout/SimpleLayout.astro";
+import type experience from "src/interface/experience";
+import fetchApi from "src/lib/strapi";
+
+// const experiences = await fetchApi<experience[]>({
+//   endpoint: "experiences", // the content type to fetch
+//   wrappedByKey: "data", // the key to unwrap the response
+// });
+// console.log(experiences)
+---
+
+<SimpleLayout>
+  <title slot="head">Bio | Ishan Parlikar</title>
+  <About />
+  <!-- <Experience experiences={experiences} /> -->
+</SimpleLayout>

@@ -1,0 +1,28 @@
+---
+import SimpleLayout from "@layout/SimpleLayout.astro";
+import { SEO } from "astro-seo";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("Blogs");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<SimpleLayout>
+  <SEO slot="head" title={entry.data.title + " | Ishan Parlikar"} />
+  <h1 class="text-4xl font-bold">{entry.data.title}</h1>
+  <p class="text-xs mb-4 mt-2">
+    Published : {new Date(entry.data.publishedAt).toUTCString()}
+  </p>
+  <h1>{entry.data.title}</h1>
+  <Content />
+  </main>
+</SimpleLayout>
+

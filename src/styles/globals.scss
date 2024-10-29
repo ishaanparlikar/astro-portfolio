@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+
+// add the code bellow
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+ /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+}
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -20,12 +35,36 @@ html {
 }
 
 body {
-  height: 100%;
   line-height: 1.5;
 }
 
 a {
   text-decoration: none;
+}
+
+
+h1 {
+  @apply text-4xl font-extrabold leading-tight mb-4;
+}
+
+h2 {
+  @apply text-3xl font-bold leading-snug mb-4;
+}
+
+h3 {
+  @apply text-2xl font-semibold leading-normal mb-3;
+}
+
+h4 {
+  @apply text-xl font-medium leading-relaxed mb-3;
+}
+
+h5 {
+  @apply text-lg font-medium leading-relaxed mb-2;
+}
+
+h6 {
+  @apply font-medium leading-relaxed mb-2;
 }
 
 .links{
@@ -36,4 +75,10 @@ a {
     bottom: 0;
     @apply border-b-4 border-overlay1 opacity-50 border-solid block w-full absolute bottom-0 left-0 transition-opacity duration-75 hover:opacity-100 ;
   }
+}
+
+#nightSky {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
